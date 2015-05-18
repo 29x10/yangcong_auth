@@ -1,27 +1,29 @@
 <%inherit file="base.mako" />
+<div ng-app="auth" ng-controller="AuthController">
 
-<img src="${image_url}" style="width: 100%">
+    <img src="${image_url}" style="width: 100%">
 
-<button class="btn btn-default" ng-click="check_scan()">检查扫描情况</button>
+    <button class="btn btn-default" ng-click="check_scan()">检查扫描情况</button>
 
-<hr>
+    <hr>
 
-<div class="sub-header">
-    在线校验
+    <div class="sub-header">
+        在线校验
+    </div>
+
+    <button class="btn btn-default" ng-click="online_auth()" ng-if="user_id">请求登陆</button>
+    <button class="btn btn-default" ng-click="check_confirm()" ng-if="confirm_event_id">检查确认情况</button>
+
+    <hr>
+    <div class="sub-header">
+        离线校验
+    </div>
+    <div class="form-group">
+        <label for="code">6位码</label>
+        <input type="text" class="form-control" id="code" ng-model="offline_code">
+    </div>
+    <button class="btn btn-default" ng-click="offline_auth()" ng-if="user_id">请求登陆</button>
 </div>
-
-<button class="btn btn-default" ng-click="online_auth()" ng-if="user_id">请求登陆</button>
-<button class="btn btn-default" ng-click="check_confirm()" ng-if="confirm_event_id">检查确认情况</button>
-
-<hr>
-<div class="sub-header">
-    离线校验
-</div>
-<div class="form-group">
-    <label for="code">6位码</label>
-    <input type="text" class="form-control" id="code" ng-model="offline_code">
-</div>
-<button class="btn btn-default" ng-click="offline_auth()" ng-if="user_id">请求登陆</button>
 
 
 <%block name="extra_js">
