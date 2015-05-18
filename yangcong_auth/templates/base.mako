@@ -20,7 +20,7 @@
 
 <div class="container" style="width: 400px;margin-left: auto;margin-right: auto;margin-top: 20px;">
     <ul class="nav nav-pills">
-        <li role="presentation" class="${'active' if request.params.get('auth_type', 'bind') == 'bind' else ''}"><a href="/?auth_type=bind">绑定洋葱客户</a></li>
+        <li role="presentation" class="${'active' if request.params.get('auth_type', 'bind') == 'bind'  and request.path == '/' else ''}"><a href="/?auth_type=bind">绑定洋葱客户</a></li>
         <li role="presentation" class="${'active' if request.params.get('auth_type', 'bind') == 'auth' else ''}"><a href="/?auth_type=auth">通过洋葱进行验证</a></li>
         <li role="presentation" class="${'active' if 'page' in request.path else ''}"><a href="/auth_page/">洋葱登陆界面</a></li>
     </ul>
