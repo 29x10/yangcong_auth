@@ -10,4 +10,6 @@ RUN python bootstrap.py
 RUN bin/buildout
 
 
+EXPOSE 6543
+
 CMD ["bin/gunicorn", "--paste", "production.ini"]
