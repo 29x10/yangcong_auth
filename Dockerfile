@@ -8,3 +8,6 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app/
 RUN python bootstrap.py
 RUN bin/buildout
+
+
+CMD ["bin/gunicorn", "--paste", "production.ini"]
