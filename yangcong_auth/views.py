@@ -17,7 +17,7 @@ AUTH_ID = 'Pqsv6eOsIC4KtjYRDGO8'
 def my_view(request):
     if request.method == 'POST':
         signature = hashlib.md5()
-        call_back_url = "http://localhost:6543/"
+        call_back_url = "http://binlei-yangcong-auth.daoapp.io"
         timestamp = str(int(time.time()))
         signature.update('auth_id=' + AUTH_ID + 'callback=' + call_back_url + 'timestamp=' + timestamp + APP_KEY)
         auth_url = 'https://auth.yangcong.com/v2/auth_page?'
