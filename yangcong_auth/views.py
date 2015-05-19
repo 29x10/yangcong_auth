@@ -85,12 +85,14 @@ def online_auth(request):
     uid = request.params.get('uid', '1')
     request_url = 'https://api.yangcong.com/v2/realtime_authorization'
     signature.update('action_type=1app_id=' + APP_ID + 'uid=' + uid + APP_KEY)
-    r = urlopen(request_url, data=urlencode({
+    encoded_data = urlencode({
         'action_type': '1',
         'app_id': APP_ID,
         'uid': uid,
         'user_ip': '10.0.0.2',
         'username': '绿茶浏览器',
         'signature': signature.hexdigest()
-    }))
+    })
+    print encoded_data
+    r = urlopen(request_url, data=encoded_data)
     return json.loads(r.read())

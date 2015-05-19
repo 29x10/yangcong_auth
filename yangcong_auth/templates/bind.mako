@@ -66,7 +66,7 @@
 
 
             $scope.check_confirm = function () {
-                $http.get('/check?event_id=' + encodeURIComponent($scope.scan_event_id)).success(function (data) {
+                $http.get('/check?event_id=' + encodeURIComponent($scope.confirm_event_id)).success(function (data) {
                     if (data.status == 200) {
                         console.log(data);
                     } else {
