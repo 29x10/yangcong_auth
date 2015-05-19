@@ -35,7 +35,7 @@
             $scope.confirm_event_id = '';
             $scope.offline_code = '';
             $scope.check_scan = function () {
-                $http.get('/check?event_id=' + $scope.scan_event_id).success(function (data) {
+                $http.get('/check?event_id=' + encodeURIComponent($scope.scan_event_id)).success(function (data) {
                     if (data.status == 200) {
                         $scope.user_id = data.uid;
                     } else {
@@ -45,7 +45,7 @@
             };
 
             $scope.online_auth = function () {
-                $http.get('/online_auth?uid=' + $scope.user_id).success(function (data) {
+                $http.get('/online_auth?uid=' + encodeURIComponent($scope.user_id)).success(function (data) {
                     if (data.status == 200) {
                         $scope.confirm_event_id = data.event_id;
                     } else {
@@ -55,7 +55,7 @@
             };
 
             $scope.offline_auth = function () {
-                $http.get('/offline_auth?uid=' + $scope.user_id + '&code=' + $scope.offline_code).success(function (data) {
+                $http.get('/offline_auth?uid=' + encodeURIComponent($scope.user_id) + '&code=' + encodeURIComponent($scope.offline_code)).success(function (data) {
                     if (data.status == 200) {
                         alert('登陆成功');
                     } else {
@@ -66,7 +66,7 @@
 
 
             $scope.check_confirm = function () {
-                $http.get('/check?event_id=' + $scope.scan_event_id).success(function (data) {
+                $http.get('/check?event_id=' + encodeURIComponent($scope.scan_event_id)).success(function (data) {
                     if (data.status == 200) {
                         console.log(data);
                     } else {
@@ -74,7 +74,6 @@
                     }
                 })
             };
-
         }]);
     </script>
 </%block>
